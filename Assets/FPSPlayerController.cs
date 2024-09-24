@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(CharacterController))] // Used to manage player's movement
+using UnityEngine.Animations;
+using UnityEngine.InputSystem;
 
 public class FPSPlayerController : MonoBehaviour
 {
     [Header("Camera")]
-    private Camera cam;
     [SerializeField] float camSensitivity;
     [SerializeField] float camXClamp = 85;
+    private Camera cam;
     private float camLocalXRotation;
+    private int RANDOMVAR;
 
     [Header("Movement")]
-    private Rigidbody rb;
-    private CharacterController characterController;
     [SerializeField] float walkSpeed;
+    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY;
+    private Rigidbody rb;
+    
 
 
     // Start is called before the first frame update
@@ -28,7 +30,6 @@ public class FPSPlayerController : MonoBehaviour
 
         // Set movement variables
         rb = GetComponent<Rigidbody>();
-        characterController = GetComponent<CharacterController>();
 
     }
 
@@ -49,18 +50,23 @@ public class FPSPlayerController : MonoBehaviour
     void LookAtCursor()
     {
         // Rotate the player around the Y axis based on the mouse movement along the X axis, adjusted by camera sensitivity
-        transform.eulerAngles += Vector3.up * Input.GetAxis("Mouse X") * camSensitivity;
+        transform.eulerAngles += Vector3.up * lookX.action.ReadValue<float>() * camSensitivity;
 
         // Rotate the camera around the X axis without rotating the player.
-        camLocalXRotation += -Input.GetAxis("Mouse Y") * camSensitivity;
+        camLocalXRotation += -lookY.action.ReadValue<float>() * camSensitivity;
         camLocalXRotation = Mathf.Clamp(camLocalXRotation, -camXClamp, camXClamp); // Clamp the rotation to avoid issues when looking straight up or down
         cam.transform.localEulerAngles = Vector3.right * camLocalXRotation;
     }
 
     void Walk()
     {
+        // Read the player's input to the Movement action
+        Vector2 walkInput = movement.action.ReadValue<Vector2>();
+
+        // Convert the walkInput vector to a Vector3 based in local space
+        Vector3 walkLocalVector = transform.forward * walkInput.y + transform.right * walkInput.x;
         
-        characterController.SimpleMove(Vector3.forward * walkSpeed);
-        //rb.velocity = new Vector3(Input.GetAxis("Horizontal") * walkSpeed, rb.velocity.y, Input.GetAxis("Vertical") * walkSpeed);
+        // Move in the local space direction specified based on the input strength and walkSpeed
+        rb.velocity = (walkLocalVector * walkSpeed);
     }
 }
