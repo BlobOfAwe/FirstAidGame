@@ -14,10 +14,15 @@ public class FPSPlayerController : MonoBehaviour
     private float camLocalXRotation;
     private int RANDOMVAR;
 
+    [Header("Interaction")]
+    [SerializeField] float interactRange = 5f;
+    [SerializeField] LayerMask interactables;
+    private Transform activeHighlight = null;
+
     [Header("Movement")]
     [SerializeField] float walkSpeed;
     [SerializeField] float sprintModifier = 2; // speed moving forward is multiplied by this value when sprinting
-    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY;
+    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY, interact;
     private Rigidbody rb;
     
 
@@ -39,6 +44,8 @@ public class FPSPlayerController : MonoBehaviour
     void Update()
     {
         Walk();
+        if (interact.action.triggered) { Interact(); }
+        SeekInteractable();
     }
 
     // LateUpdate is called every frame after Update
@@ -48,6 +55,20 @@ public class FPSPlayerController : MonoBehaviour
         LookAtCursor();
     }
 
+    // Raycast for an interactable object and invoke it's onInteract Method
+    void Interact()
+    {
+        // Raycast out to interactRange and look for interactable objects.
+        // If one is found, invoke its attatched OnInteract Event from Interactable.cs
+        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the Interactable.cs component**-----
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
+        {
+            hit.collider.GetComponent<Interactable>().onInteract.Invoke();
+        }
+        else { Debug.LogWarning("No Raycast Target Found."); }
+    }
+    
     // Update the player and camera rotations based on mouse movement
     void LookAtCursor()
     {
@@ -61,6 +82,32 @@ public class FPSPlayerController : MonoBehaviour
         camLocalXRotation += -lookY.action.ReadValue<float>() * camSensitivity;
         camLocalXRotation = Mathf.Clamp(camLocalXRotation, -camXClamp, camXClamp); // Clamp the rotation to avoid issues when looking straight up or down
         cam.transform.eulerAngles = new Vector3 (camLocalXRotation, transform.eulerAngles.y);
+    }
+
+    void SeekInteractable()
+    {
+        // Raycast out to interactRange and look for interactable objects.
+        // If one is found, find a child object called Highlight and enable it to highlight the object
+        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the Interactable.cs component**-----
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
+        {
+            if (hit.collider.transform.Find("Highlight") != activeHighlight && activeHighlight != null)
+            {
+                activeHighlight.gameObject.SetActive(false);
+            }
+
+            activeHighlight = hit.collider.transform.Find("Highlight");
+            activeHighlight.gameObject.SetActive(true);
+        }
+        else if (activeHighlight != null)
+        { 
+            if (activeHighlight.gameObject.activeSelf)
+            {
+                activeHighlight.gameObject.SetActive(false);
+                activeHighlight = null;
+            }
+        }
     }
 
     void Walk()
