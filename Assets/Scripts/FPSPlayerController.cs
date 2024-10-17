@@ -59,12 +59,12 @@ public class FPSPlayerController : MonoBehaviour
     void Interact()
     {
         // Raycast out to interactRange and look for interactable objects.
-        // If one is found, invoke its attatched OnInteract Event from Interactable.cs
-        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the Interactable.cs component**-----
+        // If one is found, call the OnInteract() function
+        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the a class that inherits from Interactable.cs**-----
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
-            hit.collider.GetComponent<Interactable>().onInteract.Invoke();
+            hit.collider.GetComponent<Interactable>().OnInteract();
         }
         else { Debug.LogWarning("No Raycast Target Found."); }
     }
@@ -88,7 +88,7 @@ public class FPSPlayerController : MonoBehaviour
     {
         // Raycast out to interactRange and look for interactable objects.
         // If one is found, find a child object called Highlight and enable it to highlight the object
-        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the Interactable.cs component**-----
+        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the a class that inherits from Interactable.cs**-----
         RaycastHit hit;
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
