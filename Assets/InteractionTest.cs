@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
-
-public class InteractionTest : MonoBehaviour
+public class InteractionTest : Interactable
 {
-    public void LogInteraction()
+    public override void OnInteract()
     {
         Debug.Log(gameObject.name + " was interacted with.");
     }
