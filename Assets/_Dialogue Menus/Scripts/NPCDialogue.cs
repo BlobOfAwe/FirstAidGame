@@ -42,7 +42,7 @@ public class NPCDialogue : Interactable
 
     private void Start()
     {
-        dialogueCanvas = GetComponentInChildren<Canvas>();
+        dialogueCanvas = transform.parent.GetComponentInChildren<Canvas>();
         dialogueCanvas.gameObject.SetActive(false);
     }
 

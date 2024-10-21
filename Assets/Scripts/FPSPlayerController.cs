@@ -6,6 +6,11 @@ using UnityEngine.InputSystem;
 
 public class FPSPlayerController : MonoBehaviour
 {
+    public enum playerMode { sceneAssessment, primaryAssessment, secondaryAssessment, paused }
+
+    [Header("Mode")]
+    public playerMode mode;
+
     [Header("Camera")]
     [SerializeField] Vector3 camOffset;
     [SerializeField] float camSensitivity;
@@ -15,6 +20,7 @@ public class FPSPlayerController : MonoBehaviour
     private int RANDOMVAR;
 
     [Header("Interaction")]
+    private SceneAssessment sceneAssessment;
     [SerializeField] float interactRange = 5f;
     [SerializeField] LayerMask interactables;
     private Transform activeHighlight = null;
@@ -30,6 +36,9 @@ public class FPSPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        try { sceneAssessment = FindAnyObjectByType<SceneAssessment>(); } 
+        catch { Debug.LogError("No sceneAssessment object found in scene!"); }
+        
         // Set camera and viewport settings
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -43,8 +52,14 @@ public class FPSPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Walk();
-        if (interact.action.triggered) { Interact(); }
+        if (mode != playerMode.paused && mode != playerMode.sceneAssessment) { Walk(); }
+        
+        if (interact.action.triggered) 
+        { 
+            if (mode == playerMode.sceneAssessment) { IdentifyHazard(); }
+            else if (mode != playerMode.paused) { Interact(); }
+
+        }
         SeekInteractable();
     }
 
@@ -65,6 +80,19 @@ public class FPSPlayerController : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
             hit.collider.GetComponent<Interactable>().OnInteract();
+        }
+        else { Debug.LogWarning("No Raycast Target Found."); }
+    }
+
+    void IdentifyHazard()
+    {
+        // Raycast out to interactRange and look for any gameObject.
+        // If one is found, add it to the sceneAssessment hazard list
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+        {
+            sceneAssessment.AddHazard(hit.collider.gameObject.name);
+            Debug.Log("hit");
         }
         else { Debug.LogWarning("No Raycast Target Found."); }
     }
