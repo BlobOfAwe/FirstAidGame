@@ -19,6 +19,16 @@ public class SceneAssessment : MonoBehaviour
     }
     public void AddHazard(string objName)
     {
+        Button[] buttons = buttonContainer.GetComponentsInChildren<Button>();
+
+        foreach (var button in buttons)
+        {
+            if (button.GetComponentInChildren<TextMeshProUGUI>().text == objName)
+            {
+                return;
+            }
+        }
+
         var option = Instantiate(buttonPrefab, buttonContainer);
         option.GetComponentInChildren<TextMeshProUGUI>().text = objName;
         option.GetComponent<Button>().onClick.AddListener(() => Destroy(option));

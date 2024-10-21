@@ -2,13 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class LevelManager : MonoBehaviour
 {
-    [Header("Points")]
     public int points;
+    private FPSPlayerController player;
+    private GameObject primaryAssessmentForm;
 
     [Header("Scene Assessment Key")]
     public string[] sceneAssessment;
@@ -17,6 +21,9 @@ public class LevelManager : MonoBehaviour
     public  bool[] airway = new bool[3];
     public  bool[] breathing = new bool[7];
     public  bool[] circulation = new bool[3];
+
+    [Header("Level Results UI")]
+    public GameObject resultsUI;
 
     // Start is called before the first frame update
     void Awake()
@@ -28,6 +35,13 @@ public class LevelManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        player = FindAnyObjectByType<FPSPlayerController>();
+        primaryAssessmentForm = FindAnyObjectByType<SubmitPrimaryAssessment>().transform.parent.gameObject;
+        primaryAssessmentForm.SetActive(false);
+    }
+
     public void SubmitPrimaryAssessment(bool[] a, bool[] b, bool[] c)
     { 
         if (Enumerable.SequenceEqual(a, airway)) 
@@ -37,6 +51,7 @@ public class LevelManager : MonoBehaviour
         if (Enumerable.SequenceEqual(c, circulation)) 
         { points++; }
         Debug.Log("Submitted Primary Assessment with " + points + " points");
+        player.mode = FPSPlayerController.playerMode.secondaryAssessment;
     }
 
     // Add points for each item both in hazards and in the sceneAssessmentKey
@@ -55,11 +70,22 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("Compared: " + sceneAssessment[i] + " + " + hazards[j]);
             }
         }
-
+        player.mode = FPSPlayerController.playerMode.primaryAssessment;
+        primaryAssessmentForm.SetActive(true);
         Debug.Log("Completed Analyzing Scene Assessment submission of length " + hazards.Length + " compared to key of length " + sceneAssessment.Length);
     }
 
-    
+    public void EndLevel()
+    {
+        player.mode = FPSPlayerController.playerMode.paused;
+        resultsUI.SetActive(true);
+        resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + " points in this scenario.";
+        WorldspaceUIRaycaster[] worldspaceCanvases = FindObjectsOfType<WorldspaceUIRaycaster>();
+        foreach (var canvas in  worldspaceCanvases) { canvas.gameObject.SetActive(false); }
+    }
+
+    public void AddPoint() { points++; }
+    public void ReloadScene() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
 }
 
 

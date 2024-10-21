@@ -12,6 +12,7 @@ public class NPCDialogue : Interactable
     [SerializeField] Image menuBase;
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] TextMeshProUGUI responseText; 
+    private LevelManager levelManager;
 
     [SerializeField] float space; // Space between UI elements
     public string[] questions;
@@ -34,7 +35,7 @@ public class NPCDialogue : Interactable
             // Tell the button to call the ChooseMenuOption function for the appropriate index
             int index = i; // This creates a local variable with value i so that the following lamda expression catches only the variable instance with the desired value
             option.GetComponent<Button>().onClick.AddListener(() => ChooseMenuOption(index));
-            
+
             // Add the new button to the list
             buttons[i] = option;
         }
@@ -42,7 +43,6 @@ public class NPCDialogue : Interactable
 
     private void Start()
     {
-        dialogueCanvas = transform.parent.GetComponentInChildren<Canvas>();
         dialogueCanvas.gameObject.SetActive(false);
     }
 
