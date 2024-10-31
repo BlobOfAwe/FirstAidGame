@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Extends the GraphicRaycaster class to allow Worldspace UI Canvases to interact with the mouse cursor
+/// even when CursorLockMode.Locked. This should be put on all worldspace canvases.
+/// </summary>
 public class WorldspaceUIRaycaster : GraphicRaycaster
 {
     // The following code was written by u/QpaCompany as a workaround for UI elements not working with CursorLockMode.Locked

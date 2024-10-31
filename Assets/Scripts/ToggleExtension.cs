@@ -4,6 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+/// <summary>
+/// Extends the Toggle component class. Makes toggles display as their "Selected" colour while toggled on,
+/// even when not selected using controller navigation and their "Normal" colour otherwise.
+/// </summary>
+
 [RequireComponent(typeof(Toggle))]
 
 public class ToggleExtension : MonoBehaviour
@@ -25,7 +30,6 @@ public class ToggleExtension : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         toggle.colors = toggle.isOn ? selectedBlock : normalBlock;
     }
 }

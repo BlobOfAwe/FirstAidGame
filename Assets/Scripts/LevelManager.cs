@@ -10,7 +10,10 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public bool debugEnabled;
+    
     public int points;
+    public bool sceneResolved;
     private FPSPlayerController player;
     private GameObject primaryAssessmentForm;
 

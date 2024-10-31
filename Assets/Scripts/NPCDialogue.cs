@@ -12,7 +12,7 @@ public class NPCDialogue : Interactable
     [SerializeField] Image menuBase;
     [SerializeField] Canvas dialogueCanvas;
     [SerializeField] TextMeshProUGUI responseText; 
-    private LevelManager levelManager;
+    public LevelManager levelManager;
 
     [SerializeField] float space; // Space between UI elements
     public string[] questions;
@@ -41,6 +41,7 @@ public class NPCDialogue : Interactable
         }
     }
 
+    // Hide the dialogue canvas on Start
     private void Start()
     {
         dialogueCanvas.gameObject.SetActive(false);
@@ -49,18 +50,18 @@ public class NPCDialogue : Interactable
     // When the NPC is interacted with, open the canvas with dialogue options
     public override void OnInteract()
     {
-        dialogueCanvas.gameObject.SetActive(true);
-        foreach (var button in buttons) { button.SetActive(true); }
-        responseText.text = "";
-        responseText.gameObject.SetActive(false);
+        dialogueCanvas.gameObject.SetActive(true); // Enable the canvas
+        foreach (var button in buttons) { button.SetActive(true); } // Enable each of the dialogue buttons under the canvas
+        responseText.text = ""; // Delete any text from the responseText object
+        responseText.gameObject.SetActive(false); // Hide the responseText object
     }
 
     // When a dialogue option is selected, hide the buttons and display the appropriate response text
     public void ChooseMenuOption(int index)
     {
-        foreach (var button in buttons) { button.SetActive(false); }
-        responseText.gameObject.SetActive(true);
-        try { responseText.text = answers[index]; }
+        foreach (var button in buttons) { button.SetActive(false); } // Hide all dialogue option buttons
+        responseText.gameObject.SetActive(true); // Display the response text
+        try { responseText.text = answers[index]; } // Change the response text to match the corresponding answer
         catch { 
             Debug.LogError("No corresponding answer for Object " + gameObject.name + " question" + index + ": " + questions[index]); 
             responseText.text = "Null Response"; 
