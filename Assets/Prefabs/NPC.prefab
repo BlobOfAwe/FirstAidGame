@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 2802983228080576857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.126643, y: 0.9, z: 3.4519088}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -863,6 +863,7 @@ MonoBehaviour:
   menuBase: {fileID: 4933544596998269778}
   dialogueCanvas: {fileID: 3882434514707054761}
   responseText: {fileID: 904640184473011431}
+  levelManager: {fileID: 0}
   space: 0
   questions:
   - Question 1

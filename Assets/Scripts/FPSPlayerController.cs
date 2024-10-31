@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class FPSPlayerController : MonoBehaviour
 {
     public enum playerMode { sceneAssessment, primaryAssessment, secondaryAssessment, paused }
+    private LevelManager levelManager;
 
     [Header("Mode")]
     public playerMode mode;
@@ -15,7 +17,7 @@ public class FPSPlayerController : MonoBehaviour
     [SerializeField] Vector3 camOffset;
     [SerializeField] float camSensitivity;
     [SerializeField] float camXClamp = 85;
-    private Camera cam;
+    public Camera cam;
     private float camLocalXRotation;
     private int RANDOMVAR;
 
@@ -47,6 +49,8 @@ public class FPSPlayerController : MonoBehaviour
         // Set movement variables
         rb = GetComponent<Rigidbody>();
 
+        levelManager = FindAnyObjectByType<LevelManager>();
+
     }
 
     // Update is called once per frame
@@ -57,9 +61,11 @@ public class FPSPlayerController : MonoBehaviour
         if (interact.action.triggered) 
         { 
             if (mode == playerMode.sceneAssessment) { IdentifyHazard(); }
-            else if (mode != playerMode.paused) { Interact(); }
-
+            else if (mode == playerMode.secondaryAssessment) { Interact(); }
         }
+
+        if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
+
         SeekInteractable();
     }
 
@@ -67,7 +73,8 @@ public class FPSPlayerController : MonoBehaviour
     // Any values that may have changed during Update should be evaluated here
     private void LateUpdate()
     {
-        LookAtCursor();
+        if (mode != playerMode.paused) { LookAtCursor(); }
+        else { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; };
     }
 
     // Raycast for an interactable object and invoke it's onInteract Method
@@ -77,7 +84,7 @@ public class FPSPlayerController : MonoBehaviour
         // If one is found, call the OnInteract() function
         // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the a class that inherits from Interactable.cs**-----
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
             hit.collider.GetComponent<Interactable>().OnInteract();
         }
@@ -89,7 +96,7 @@ public class FPSPlayerController : MonoBehaviour
         // Raycast out to interactRange and look for any gameObject.
         // If one is found, add it to the sceneAssessment hazard list
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit))
         {
             sceneAssessment.AddHazard(hit.collider.gameObject.name);
             Debug.Log("hit");
@@ -149,5 +156,21 @@ public class FPSPlayerController : MonoBehaviour
         
         // Move in the local space direction specified based on the input strength and walkSpeed
         rb.velocity = (walkLocalVector * walkSpeed + Vector3.up * rb.velocity.y);
+    }
+
+    // A bypass function that should only be called for developer purposes while debug is enabled.
+    // Automatically resolves the scene and markes the patient as fixed
+    void DebugFixPatient()
+    {
+        // Raycast out to interactRange and look for interactable objects.
+        // If one is found, call the OnInteract() function
+        // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the a class that inherits from Interactable.cs**-----
+        RaycastHit hit;
+        if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
+        {
+            try { hit.collider.GetComponent<PatientBehaviour>().FixPatient(); }
+            catch { Debug.LogWarning("Targeted object " + hit.collider.gameObject.name + " contains no type of PatientBehaviour"); }
+        }
+        else { Debug.LogWarning("No Raycast Target Found."); }
     }
 }
