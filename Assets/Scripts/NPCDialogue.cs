@@ -15,29 +15,16 @@ public class NPCDialogue : Interactable
     public LevelManager levelManager;
 
     [SerializeField] float space; // Space between UI elements
-    public string[] questions;
-    public string[] answers;
-    private GameObject[] buttons; // A list used at runtime to contain all instantiated dialogue buttons
+    private Button[] buttons; // A list used at runtime to contain all instantiated dialogue buttons
 
     // Populate the list buttons by instantiating a button for each question.
     void Awake()
     {
         // Determine how many buttons there should be
-        buttons = new GameObject[questions.Length];
-
-        // For each question...
-        for(int i = 0; i < questions.Length; i++)
+        buttons = menuBase.GetComponentsInChildren<Button>();
+        foreach (var button in buttons)
         {
-            // Create a button with the question text
-            var option = Instantiate(dialogueButtonPrefab, menuBase.transform);
-            option.GetComponentInChildren<TextMeshProUGUI>().text = questions[i];
-
-            // Tell the button to call the ChooseMenuOption function for the appropriate index
-            int index = i; // This creates a local variable with value i so that the following lamda expression catches only the variable instance with the desired value
-            option.GetComponent<Button>().onClick.AddListener(() => ChooseMenuOption(index));
-
-            // Add the new button to the list
-            buttons[i] = option;
+            button.GetComponent<DialogueButton>().npc = this ;
         }
     }
 
@@ -51,19 +38,18 @@ public class NPCDialogue : Interactable
     public override void OnInteract()
     {
         dialogueCanvas.gameObject.SetActive(true); // Enable the canvas
-        foreach (var button in buttons) { button.SetActive(true); } // Enable each of the dialogue buttons under the canvas
+        foreach (var button in buttons) { button.gameObject.SetActive(true); } // Enable each of the dialogue buttons under the canvas
         responseText.text = ""; // Delete any text from the responseText object
         responseText.gameObject.SetActive(false); // Hide the responseText object
     }
 
     // When a dialogue option is selected, hide the buttons and display the appropriate response text
-    public void ChooseMenuOption(int index)
+    public void ChooseMenuOption(string answer)
     {
-        foreach (var button in buttons) { button.SetActive(false); } // Hide all dialogue option buttons
+        foreach (var button in buttons) { button.gameObject.SetActive(false); } // Hide all dialogue option buttons
         responseText.gameObject.SetActive(true); // Display the response text
-        try { responseText.text = answers[index]; } // Change the response text to match the corresponding answer
+        try { responseText.text = answer; } // Change the response text to match the corresponding answer
         catch { 
-            Debug.LogError("No corresponding answer for Object " + gameObject.name + " question" + index + ": " + questions[index]); 
             responseText.text = "Null Response"; 
         }
     }

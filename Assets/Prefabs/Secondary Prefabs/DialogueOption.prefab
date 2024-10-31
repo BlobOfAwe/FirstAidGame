@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 1412252945330771717}
   - component: {fileID: 5366481679210364837}
   - component: {fileID: 6889757752337513061}
+  - component: {fileID: 4657805349895826215}
   - component: {fileID: 2231673780910423959}
   - component: {fileID: 6966786304225226841}
   m_Layer: 5
@@ -212,6 +213,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4657805349895826215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8731923056794877989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5575feedf84ca424e9c05f4be293e84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  question: 
+  answer: 
+  pointValue: 0
+  item: {fileID: 0}
+  npc: {fileID: 0}
 --- !u!114 &2231673780910423959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +273,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6889757752337513061}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4657805349895826215}
+        m_TargetAssemblyTypeName: DialogueButton, Assembly-CSharp
+        m_MethodName: ChooseDialogueOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6966786304225226841
 MonoBehaviour:
   m_ObjectHideFlags: 0
