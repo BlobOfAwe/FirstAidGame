@@ -169,8 +169,6 @@ public class FPSPlayerController : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
             hit.collider.GetComponent<PatientBehaviour>().FixPatient();
-            //try { hit.collider.GetComponent<PatientBehaviour>().FixPatient(); }
-            //catch { Debug.LogWarning("Targeted object " + hit.collider.gameObject.name + " contains no type of PatientBehaviour"); }
         }
         else { Debug.LogWarning("No Raycast Target Found."); }
     }
