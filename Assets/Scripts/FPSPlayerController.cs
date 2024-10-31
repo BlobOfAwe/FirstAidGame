@@ -163,13 +163,14 @@ public class FPSPlayerController : MonoBehaviour
     void DebugFixPatient()
     {
         // Raycast out to interactRange and look for interactable objects.
-        // If one is found, call the OnInteract() function
+        // If one is found, check for the PatientBehaviour class and call FixPatient, throwing a warning if the class is not found
         // -----**NOTE: all interactable objects MUST be on the Interactable Layer, and have the a class that inherits from Interactable.cs**-----
         RaycastHit hit;
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, interactRange, interactables))
         {
-            try { hit.collider.GetComponent<PatientBehaviour>().FixPatient(); }
-            catch { Debug.LogWarning("Targeted object " + hit.collider.gameObject.name + " contains no type of PatientBehaviour"); }
+            hit.collider.GetComponent<PatientBehaviour>().FixPatient();
+            //try { hit.collider.GetComponent<PatientBehaviour>().FixPatient(); }
+            //catch { Debug.LogWarning("Targeted object " + hit.collider.gameObject.name + " contains no type of PatientBehaviour"); }
         }
         else { Debug.LogWarning("No Raycast Target Found."); }
     }

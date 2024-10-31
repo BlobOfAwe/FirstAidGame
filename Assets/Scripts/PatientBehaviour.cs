@@ -8,6 +8,7 @@ public class PatientBehaviour : NPCDialogue
     public void FixPatient()
     {
         levelManager.sceneResolved = true;
+        levelManager.EndLevel();
         Debug.Log("Patient Resolved!");
     }
 }

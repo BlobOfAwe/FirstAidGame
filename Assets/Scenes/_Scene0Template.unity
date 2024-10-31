@@ -192,7 +192,7 @@ MonoBehaviour:
   airway: 010000
   breathing: 00010000010000
   circulation: 000100
-  resultsUI: {fileID: 0}
+  resultsUI: {fileID: 1011356164}
 --- !u!4 &203924686
 Transform:
   m_ObjectHideFlags: 0
@@ -1453,6 +1453,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1011356164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5567079382434723461, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
+  m_PrefabInstance: {fileID: 1030110210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1030110210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1461,6 +1466,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1146328465947808259, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 203924685}
     - target: {fileID: 3351134182976152758, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
       propertyPath: m_IsActive
       value: 0
