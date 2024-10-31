@@ -1472,7 +1472,6 @@ GameObject:
   - component: {fileID: 941031528462514381}
   - component: {fileID: 625604702327760417}
   - component: {fileID: 8128283912190020835}
-  - component: {fileID: 8036798233248869591}
   m_Layer: 5
   m_Name: PrimaryAssessmentForm
   m_TagString: Untagged
@@ -1566,24 +1565,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &8036798233248869591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4761368514809405211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e858311ae899e7449460881cce76125, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueButtonPrefab: {fileID: 0}
-  dialogueCanvas: {fileID: 0}
-  responseText: {fileID: 0}
-  space: 0
-  questions: []
-  answers: []
 --- !u!1 &5503296811244993699
 GameObject:
   m_ObjectHideFlags: 0
