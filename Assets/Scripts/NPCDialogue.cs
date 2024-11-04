@@ -15,16 +15,16 @@ public class NPCDialogue : Interactable
     public LevelManager levelManager;
 
     [SerializeField] float space; // Space between UI elements
-    private Button[] buttons; // A list used at runtime to contain all instantiated dialogue buttons
+    private DialogueButton[] buttons; // A list used at runtime to contain all instantiated dialogue buttons
 
     // Populate the list buttons by instantiating a button for each question.
     void Awake()
     {
         // Determine how many buttons there should be
-        buttons = menuBase.GetComponentsInChildren<Button>();
-        foreach (var button in buttons)
+        buttons = menuBase.GetComponentsInChildren<DialogueButton>();
+        foreach (DialogueButton button in buttons)
         {
-            button.GetComponent<DialogueButton>().npc = this ;
+            button.npc = this ;
         }
     }
 
@@ -38,7 +38,7 @@ public class NPCDialogue : Interactable
     public override void OnInteract()
     {
         dialogueCanvas.gameObject.SetActive(true); // Enable the canvas
-        foreach (var button in buttons) { button.gameObject.SetActive(true); } // Enable each of the dialogue buttons under the canvas
+        foreach (DialogueButton button in buttons) { button.gameObject.SetActive(button.available); } // Enable each of the dialogue buttons under the canvas
         responseText.text = ""; // Delete any text from the responseText object
         responseText.gameObject.SetActive(false); // Hide the responseText object
     }
@@ -46,7 +46,7 @@ public class NPCDialogue : Interactable
     // When a dialogue option is selected, hide the buttons and display the appropriate response text
     public void ChooseMenuOption(string answer)
     {
-        foreach (var button in buttons) { button.gameObject.SetActive(false); } // Hide all dialogue option buttons
+        foreach (DialogueButton button in buttons) { button.gameObject.SetActive(false); } // Hide all dialogue option buttons
         responseText.gameObject.SetActive(true); // Display the response text
         try { responseText.text = answer; } // Change the response text to match the corresponding answer
         catch { 

@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueButton : MonoBehaviour
 {
+    public bool available = true; //Should this button be displayed in the menu?
     [SerializeField] string question;
     [SerializeField] string answer;
     [SerializeField] int pointValue = 0;
