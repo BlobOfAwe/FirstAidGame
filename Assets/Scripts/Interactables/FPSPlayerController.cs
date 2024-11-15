@@ -23,14 +23,14 @@ public class FPSPlayerController : MonoBehaviour
 
     [Header("Interaction")]
     private SceneAssessment sceneAssessment;
-    [SerializeField] float interactRange = 5f;
+    [SerializeField] public float interactRange = 5f;
     [SerializeField] LayerMask interactables;
     private Transform activeHighlight = null;
 
     [Header("Movement")]
     [SerializeField] float walkSpeed;
     [SerializeField] float sprintModifier = 2; // speed moving forward is multiplied by this value when sprinting
-    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY, interact;
+    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY, interact, useItem;
     private Rigidbody rb;
     
 
@@ -62,6 +62,12 @@ public class FPSPlayerController : MonoBehaviour
         { 
             if (mode == playerMode.sceneAssessment) { IdentifyHazard(); }
             else if (mode == playerMode.secondaryAssessment) { Interact(); }
+        }
+
+        if (useItem.action.triggered)
+        {
+            var item = cam.GetComponentInChildren<Item>();
+            if (item != null) { item.UseItem(); }
         }
 
         if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
