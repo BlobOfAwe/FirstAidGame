@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public bool debugEnabled;
-    
+
     public int points;
     public bool sceneResolved;
     private FPSPlayerController player;
@@ -80,11 +80,22 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel()
     {
+        ref Stage levelData = ref GameManager.Instance.saveData.levels[SceneManager.GetActiveScene().buildIndex - GameManager.Instance.firstSceneBuildIndex];
+
         player.mode = FPSPlayerController.playerMode.paused;
         resultsUI.SetActive(true);
-        resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + " points in this scenario.";
+        resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + " points in this scenario. Your previous high score was " + levelData.highScore;
         WorldspaceUIRaycaster[] worldspaceCanvases = FindObjectsOfType<WorldspaceUIRaycaster>();
         foreach (var canvas in  worldspaceCanvases) { canvas.gameObject.SetActive(false); }
+
+        
+        if (levelData.highScore < points)
+        {
+            levelData.highScore = points;
+        }
+        GameManager.Instance.saveData.levels[SceneManager.GetActiveScene().buildIndex - GameManager.Instance.firstSceneBuildIndex + 1].available = true;
+
+        GameManager.Instance.SaveGame();
     }
 
     public void AddPoint() { points++; }
