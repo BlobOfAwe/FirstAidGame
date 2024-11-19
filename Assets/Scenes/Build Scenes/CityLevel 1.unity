@@ -4662,7 +4662,7 @@ PrefabInstance:
       insertIndex: 6
       addedObject: {fileID: 1523683846}
     - targetCorrespondingSourceObject: {fileID: 1401062326972495126, guid: cfca0967261efe1408474cbf9c4c9d08, type: 3}
-      insertIndex: 7
+      insertIndex: -1
       addedObject: {fileID: 1942206772}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfca0967261efe1408474cbf9c4c9d08, type: 3}
@@ -6055,10 +6055,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 203924685}
-    - target: {fileID: 3351134182976152758, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5630739572371032894, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6139,10 +6135,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6316596745181177793, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 6408526566135889584, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 203924685}
     - target: {fileID: 6587967207094748179, guid: 33e6a7578c781f14caf73c287811923c, type: 3}
       propertyPath: m_Name
       value: HUDCanvas
@@ -10784,7 +10780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8731923056794877989, guid: 9513a97e626302d449527682309a879b, type: 3}
       propertyPath: m_Name
-      value: DialogueOption (6)
+      value: EndScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

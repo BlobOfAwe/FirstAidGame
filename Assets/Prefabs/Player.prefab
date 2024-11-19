@@ -139,6 +139,7 @@ MonoBehaviour:
   lookY: {fileID: -6363127470712037231, guid: ed44f40b6724d2e46aeb671deb4b6eba, type: 3}
   interact: {fileID: 5331519425812136154, guid: ed44f40b6724d2e46aeb671deb4b6eba, type: 3}
   useItem: {fileID: -1611360279003119397, guid: ed44f40b6724d2e46aeb671deb4b6eba, type: 3}
+  escape: {fileID: -6304655985245083454, guid: ed44f40b6724d2e46aeb671deb4b6eba, type: 3}
 --- !u!54 &2329152805652912567
 Rigidbody:
   m_ObjectHideFlags: 0

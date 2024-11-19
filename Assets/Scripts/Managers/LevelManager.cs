@@ -100,6 +100,7 @@ public class LevelManager : MonoBehaviour
 
     public void AddPoint() { points++; }
     public void ReloadScene() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); }
+    public void LoadNextLevel() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
 }
 
 

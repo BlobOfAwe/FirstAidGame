@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class FPSPlayerController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class FPSPlayerController : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float walkSpeed;
     [SerializeField] float sprintModifier = 2; // speed moving forward is multiplied by this value when sprinting
-    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY, interact, useItem;
+    [SerializeField] InputActionReference movement, jump, sprint, lookX, lookY, interact, useItem, escape;
     private Rigidbody rb;
     
 
@@ -71,6 +72,11 @@ public class FPSPlayerController : MonoBehaviour
         }
 
         if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
+
+        if (escape.action.triggered) 
+        {
+            mode = playerMode.paused;
+            SceneManager.LoadScene(0); }
 
         SeekInteractable();
     }

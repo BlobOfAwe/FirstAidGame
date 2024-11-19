@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build Scenes/CityLevel 1.unity
     guid: d822d5a527221b8489e92849c2290fbd
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/WireTime.unity
+    guid: 10bd3fd043e654549ac9a30a9576af43
   m_configObjects: {}
