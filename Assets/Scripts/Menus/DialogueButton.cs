@@ -29,6 +29,8 @@ public class DialogueButton : MonoBehaviour
         levelManager.points += pointValue;
         GiveItem();
         npc.ChooseMenuOption(answer);
+        GameObject backButton = transform.parent.parent.Find("Back Button").gameObject;
+        backButton.SetActive(true);
     }
 
     public void GiveItem()
