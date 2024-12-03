@@ -73,10 +73,10 @@ public class FPSPlayerController : MonoBehaviour
 
         if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
 
-        if (escape.action.triggered) 
-        {
-            mode = playerMode.paused;
-            SceneManager.LoadScene(0); }
+        //if (escape.action.triggered) 
+        //{
+        //    mode = playerMode.paused;
+        //    SceneManager.LoadScene(0); }
 
         SeekInteractable();
     }
