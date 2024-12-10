@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa9f50588d4e3743aec27eb17242cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Right Nut
+  name: Blanket
   giveTo: {fileID: 0}
-  response: Hey is this that guy's balls? Nice.
-  points: 0
+  response: Thanks.
+  points: 1
 --- !u!1 &6964338795051591088
 GameObject:
   m_ObjectHideFlags: 0
