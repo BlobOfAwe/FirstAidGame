@@ -5,18 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Build Scenes/MainMenu.unity
     guid: 918e7b4202b105c4390aa16f75967f2c
   - enabled: 1
     path: Assets/Scenes/Build Scenes/CityLevel 1.unity
     guid: 098822af8352c3a45b049a02b750bfdd
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Build Scenes/WireTime.unity
     guid: a06ca461a0fddc84a804d5ab79b54038
-  - enabled: 0
-    path: Assets/Scenes/Build Scenes/CityLevel 2.unity
-    guid: d822d5a527221b8489e92849c2290fbd
   - enabled: 0
     path: Assets/Scenes/_Scene0Template.unity
     guid: e4e8398ce6377f24d87f1db361c1e432

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class DialogueButton : MonoBehaviour
 {
@@ -55,4 +56,9 @@ public class DialogueButton : MonoBehaviour
 
     // Exclusively used by external button events, since Unity events can't directly access the variable "available"
     public void MakeAvailable(bool availability) { available = availability; }
+
+    public void SubmitPoints()
+    {
+        levelManager.points += pointValue;
+    }
 }
