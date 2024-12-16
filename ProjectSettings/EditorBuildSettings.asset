@@ -9,11 +9,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Build Scenes/MainMenu.unity
     guid: 918e7b4202b105c4390aa16f75967f2c
   - enabled: 1
-    path: Assets/Scenes/Build Scenes/CityLevel 1.unity
+    path: Assets/Scenes/Build Scenes/Level1 - Fainting.unity
     guid: 098822af8352c3a45b049a02b750bfdd
   - enabled: 1
-    path: Assets/Scenes/Build Scenes/WireTime.unity
+    path: Assets/Scenes/Build Scenes/Level2 - Electrocution.unity
     guid: a06ca461a0fddc84a804d5ab79b54038
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Level3 - Car Crash.unity
+    guid: 254008a2b3de38f42916062958035e29
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Level4 - Choking.unity
+    guid: 35cd15bbbce86c749bc3a7b679820d85
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Level5 - Poison.unity
+    guid: 12bf8d0586e398948a3c7924e553b34c
+  - enabled: 1
+    path: Assets/Scenes/Build Scenes/Level6 - Cut.unity
+    guid: 1afa54c806cb7204097b44c74ee2e669
   - enabled: 0
     path: Assets/Scenes/_Scene0Template.unity
     guid: e4e8398ce6377f24d87f1db361c1e432

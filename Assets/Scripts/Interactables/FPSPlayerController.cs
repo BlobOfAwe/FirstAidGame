@@ -13,11 +13,13 @@ public class FPSPlayerController : MonoBehaviour
 
     [Header("Mode")]
     public playerMode mode;
+    private playerMode lastUnpausedMode;
 
     [Header("Camera")]
     [SerializeField] Vector3 camOffset;
     [SerializeField] float camSensitivity;
     [SerializeField] float camXClamp = 85;
+    [SerializeField] private LevelSelect pauseMenu;
     public Camera cam;
     private float camLocalXRotation;
     private int RANDOMVAR;
@@ -47,6 +49,8 @@ public class FPSPlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         cam = Camera.main;
 
+        pauseMenu = FindAnyObjectByType<LevelSelect>(FindObjectsInactive.Include);
+
         // Set movement variables
         rb = GetComponent<Rigidbody>();
 
@@ -71,12 +75,25 @@ public class FPSPlayerController : MonoBehaviour
             if (item != null) { item.UseItem(); }
         }
 
-        if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
+        //if (jump.action.triggered && levelManager.debugEnabled) { DebugFixPatient(); }
 
-        //if (escape.action.triggered) 
-        //{
-        //    mode = playerMode.paused;
-        //    SceneManager.LoadScene(0); }
+        if (escape.action.triggered) 
+        {
+            if (mode == playerMode.paused) 
+            { 
+                mode = lastUnpausedMode; 
+                pauseMenu.gameObject.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked; 
+                Cursor.visible = false;
+            }
+            else { 
+                lastUnpausedMode = mode; 
+                mode = playerMode.paused;
+                pauseMenu.gameObject.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
 
         SeekInteractable();
     }
@@ -85,8 +102,13 @@ public class FPSPlayerController : MonoBehaviour
     // Any values that may have changed during Update should be evaluated here
     private void LateUpdate()
     {
-        if (mode != playerMode.paused) { LookAtCursor(); }
-        else { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; };
+        if (mode != playerMode.paused) { LookAtCursor(); Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     // Raycast for an interactable object and invoke it's onInteract Method

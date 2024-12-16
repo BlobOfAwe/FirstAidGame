@@ -64,6 +64,13 @@ public class GameManager : MonoBehaviour
         saveData = JsonUtility.FromJson<SaveData>(data);
         Debug.Log("Load Complete");
     }
+
+    public void Quit()
+    {
+        Debug.Log("Quitting...");
+        Application.Quit();
+        Debug.Log("Quitted");
+    }
 }
 
 [System.Serializable]

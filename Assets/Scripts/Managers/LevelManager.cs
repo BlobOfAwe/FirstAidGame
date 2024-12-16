@@ -101,9 +101,13 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel()
     {
+        if (GameManager.Instance == null) { Debug.LogError("No GameManager found!"); }
+        Debug.Log(GameManager.Instance.saveData.levels + "%%" + GameManager.Instance.firstSceneBuildIndex);
         ref Stage levelData = ref GameManager.Instance.saveData.levels[SceneManager.GetActiveScene().buildIndex - GameManager.Instance.firstSceneBuildIndex];
 
         player.mode = FPSPlayerController.playerMode.paused;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         resultsUI.SetActive(true);
         resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + "/" + scenePointTotal +" points in this scenario. Your previous high score was " + levelData.highScore;
         WorldspaceUIRaycaster[] worldspaceCanvases = FindObjectsOfType<WorldspaceUIRaycaster>();

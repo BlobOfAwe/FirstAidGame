@@ -14,6 +14,7 @@ public class Givable : Item
         // If the target is the designated NPC to give it to, add points and destroy the game object
         if (target == giveTo || giveTo == null)
         {
+            Debug.Log("Attempted to give to target " + target.name);
             NPCDialogue dialogue = target.GetComponentInChildren<NPCDialogue>();
             dialogue.OnInteract();
             dialogue.ChooseMenuOption(response);

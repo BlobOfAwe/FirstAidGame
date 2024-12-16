@@ -29,7 +29,7 @@ public class DebugManager : MonoBehaviour
     private void Update()
     {
         // If the toggle input is triggered that frame, toggle the Debug Canvas
-        if (debugToggle.action.triggered) { ToggleDebug(); }
+        //if (debugToggle.action.triggered) { ToggleDebug(); }
 
         // Update the FPS every updateTime seconds, based on the framerate on that Frame
         updateCounter += Time.deltaTime; // Increase the timer each frame
