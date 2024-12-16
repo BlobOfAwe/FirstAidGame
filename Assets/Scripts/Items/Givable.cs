@@ -10,6 +10,8 @@ public class Givable : Item
     [SerializeField] private int points;
     public override void ItemEffect(GameObject target)
     {
+        Debug.Log("Attempted to use item on target " + target.name);
+        
         // If the target is the designated NPC to give it to, add points and destroy the game object
         if (target == giveTo || giveTo == null)
         {
