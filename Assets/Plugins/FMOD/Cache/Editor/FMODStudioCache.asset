@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638698125766478824
+  lastModified: 638698784399477080
   FileSizes:
   - Name: 
-    Value: 1004
+    Value: 1050
   Exists: 1
 --- !u!114 &-1284621537177567865
 MonoBehaviour:
@@ -114,12 +114,13 @@ MonoBehaviour:
   - {fileID: 2417681544700125749}
   - {fileID: 7924225835035791021}
   - {fileID: -1284621537177567865}
+  - {fileID: 4513201843512384253}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2161301672698274952}
   StringsBanks:
   - {fileID: -2822276683277872444}
-  cacheTime: 638698125766478824
+  cacheTime: 638698784399477080
   cacheVersion: 131621
 --- !u!114 &2161301672698274952
 MonoBehaviour:
@@ -136,7 +137,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638698125766468500
+  lastModified: 638698784399451881
   FileSizes: []
   Exists: 1
 --- !u!114 &2417681544700125749
@@ -166,6 +167,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 19504
+--- !u!114 &4513201843512384253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/PartiallyBlocked
+  m_EditorClassIdentifier: 
+  Path: event:/PartiallyBlocked
+  Guid:
+    Data1: -1633635666
+    Data2: 1325687001
+    Data3: 395509129
+    Data4: -267450129
+  Banks:
+  - {fileID: 2161301672698274952}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 66951
 --- !u!114 &6741921691228787697
 MonoBehaviour:
   m_ObjectHideFlags: 0

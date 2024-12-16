@@ -12858,11 +12858,11 @@ MonoBehaviour:
   CollisionTag: Player
   EventReference:
     Guid:
-      Data1: 2069986075
-      Data2: 1296681739
-      Data3: 126409371
-      Data4: 52589980
-    Path: event:/SlowBreathing3d
+      Data1: -1633635666
+      Data2: 1325687001
+      Data3: 395509129
+      Data4: -267450129
+    Path: event:/PartiallyBlocked
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
@@ -12872,8 +12872,8 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 1
-  OverrideMinDistance: 2.8
-  OverrideMaxDistance: 3.73
+  OverrideMinDistance: 1.9
+  OverrideMaxDistance: 3.46
 --- !u!4 &1614151614
 Transform:
   m_ObjectHideFlags: 0
@@ -12883,7 +12883,7 @@ Transform:
   m_GameObject: {fileID: 1614151611}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -51.96, y: -0.41, z: 39.75}
+  m_LocalPosition: {x: -51.96, y: 0.53, z: 39.75}
   m_LocalScale: {x: 4.351105, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15681,7 +15681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2095427800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16194,7 +16194,6 @@ SceneRoots:
   - {fileID: 1791625592}
   - {fileID: 356599110}
   - {fileID: 777848387}
-  - {fileID: 1614151614}
   - {fileID: 118555920}
   - {fileID: 2127116266}
   - {fileID: 1030110210}
@@ -16208,6 +16207,7 @@ SceneRoots:
   - {fileID: 1362440554}
   - {fileID: 691036507}
   - {fileID: 2095427802}
+  - {fileID: 1614151614}
   - {fileID: 1857284350}
   - {fileID: 412358454}
   - {fileID: 1759234890}
