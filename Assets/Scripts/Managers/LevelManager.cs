@@ -13,10 +13,11 @@ public class LevelManager : MonoBehaviour
     public bool debugEnabled;
 
     public int points;
+    private int scenePointTotal;
     public bool sceneResolved;
     private FPSPlayerController player;
     private GameObject primaryAssessmentForm;
-
+    
     [Header("Scene Assessment Key")]
     public string[] sceneAssessment;
 
@@ -43,6 +44,26 @@ public class LevelManager : MonoBehaviour
         player = FindAnyObjectByType<FPSPlayerController>();
         primaryAssessmentForm = FindAnyObjectByType<SubmitPrimaryAssessment>().transform.parent.gameObject;
         primaryAssessmentForm.SetActive(false);
+
+        scenePointTotal = 0;
+        DialogueButton[] allDialogOptions = FindObjectsOfType<DialogueButton>(true);
+        foreach (var option in allDialogOptions)
+        {
+            if (option.pointValue > 0)
+            {
+                scenePointTotal += option.pointValue;
+            }
+
+            if (option.item != null && option.item.GetComponent<Givable>() != null)
+            {
+                int itemPoints = option.item.GetComponent<Givable>().points;
+                if (itemPoints > 0) { scenePointTotal += itemPoints; }
+            }
+        }
+
+        scenePointTotal += 3 + sceneAssessment.Length;
+
+        Debug.Log(scenePointTotal);
     }
 
     public void SubmitPrimaryAssessment(bool[] a, bool[] b, bool[] c)
@@ -84,7 +105,7 @@ public class LevelManager : MonoBehaviour
 
         player.mode = FPSPlayerController.playerMode.paused;
         resultsUI.SetActive(true);
-        resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + " points in this scenario. Your previous high score was " + levelData.highScore;
+        resultsUI.GetComponentInChildren<Text>().text = "Level complete! You scored " + points + "/" + scenePointTotal +" points in this scenario. Your previous high score was " + levelData.highScore;
         WorldspaceUIRaycaster[] worldspaceCanvases = FindObjectsOfType<WorldspaceUIRaycaster>();
         foreach (var canvas in  worldspaceCanvases) { canvas.gameObject.SetActive(false); }
 
