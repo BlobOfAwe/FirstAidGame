@@ -7,9 +7,10 @@ public class Givable : Item
 {
     [SerializeField] private GameObject giveTo;
     [SerializeField] private string response;
-    [SerializeField] private int points;
+    [SerializeField] public int points;
     public override void ItemEffect(GameObject target)
     {
+        
         // If the target is the designated NPC to give it to, add points and destroy the game object
         if (target == giveTo || giveTo == null)
         {

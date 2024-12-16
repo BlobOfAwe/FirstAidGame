@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4632074770880490735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/ParkMusic
+  m_EditorClassIdentifier: 
+  Path: event:/ParkMusic
+  Guid:
+    Data1: 1239431980
+    Data2: 1197688867
+    Data3: 819880125
+    Data4: 1903002419
+  Banks:
+  - {fileID: 2161301672698274952}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 201142
 --- !u!114 &-4465171427005372177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 8892
+--- !u!114 &-3556866742025574020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CityMusic
+  m_EditorClassIdentifier: 
+  Path: event:/CityMusic
+  Guid:
+    Data1: 1543808771
+    Data2: 1297472624
+    Data3: 1982403737
+    Data4: -727979732
+  Banks:
+  - {fileID: 2161301672698274952}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 186000
 --- !u!114 &-2822276683277872444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +96,10 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638698784399477080
+  lastModified: 638698902113258079
   FileSizes:
   - Name: 
-    Value: 1050
+    Value: 1140
   Exists: 1
 --- !u!114 &-1284621537177567865
 MonoBehaviour:
@@ -89,7 +143,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/breathing.bank
   Name: breathing
   StudioPath: bank:/breathing
-  lastModified: 638697997810817904
+  lastModified: 638698792375754050
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -115,12 +169,14 @@ MonoBehaviour:
   - {fileID: 7924225835035791021}
   - {fileID: -1284621537177567865}
   - {fileID: 4513201843512384253}
+  - {fileID: -3556866742025574020}
+  - {fileID: -4632074770880490735}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2161301672698274952}
   StringsBanks:
   - {fileID: -2822276683277872444}
-  cacheTime: 638698784399477080
+  cacheTime: 638698902113258079
   cacheVersion: 131621
 --- !u!114 &2161301672698274952
 MonoBehaviour:
@@ -137,7 +193,7 @@ MonoBehaviour:
   Path: Assets/FMODBanks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638698784399451881
+  lastModified: 638698902113101509
   FileSizes: []
   Exists: 1
 --- !u!114 &2417681544700125749

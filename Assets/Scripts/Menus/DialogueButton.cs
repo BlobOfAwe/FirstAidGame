@@ -10,8 +10,8 @@ public class DialogueButton : MonoBehaviour
     public bool available = true; //Should this button be displayed in the menu?
     [SerializeField] string question;
     [SerializeField] string answer;
-    [SerializeField] int pointValue = 0;
-    [SerializeField] GameObject item;
+    public int pointValue = 0;
+    public GameObject item;
     [HideInInspector] public NPCDialogue npc;
     private LevelManager levelManager;
     private Camera cam;
