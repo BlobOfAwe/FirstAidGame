@@ -1704,7 +1704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 913845681951795218, guid: 2435736d6adca23458edd7c80c901e3e, type: 3}
       propertyPath: m_Name
-      value: People
+      value: Crowd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2265,7 +2265,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 186757882122740016, guid: bcc8732b8b44622449c23934f89e68c0, type: 3}
       propertyPath: m_Name
-      value: People
+      value: Crowd
       objectReference: {fileID: 0}
     - target: {fileID: 710636224206764938, guid: bcc8732b8b44622449c23934f89e68c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8549,7 +8549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -8577,6 +8577,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Mode
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
@@ -8608,6 +8612,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1568054281}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Target
+      value: 
+      objectReference: {fileID: 1044565358}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -8633,6 +8641,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
@@ -8664,6 +8676,10 @@ PrefabInstance:
       value: MakeAvailable
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
+      value: MakeAvailable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: DialogueButton, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -8692,6 +8708,10 @@ PrefabInstance:
       value: DialogueButton, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_TargetAssemblyTypeName
+      value: DialogueButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
@@ -8709,6 +8729,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Arguments.m_BoolArgument
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
@@ -8737,6 +8761,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[8].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150839869538178666, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[9].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1595819092602787478, guid: 5bf194fbd5ad1354ea6685a5b7198ad1, type: 3}
@@ -10463,7 +10491,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5986958801767457440, guid: 87a7b985b15a4244091de35d7df9169a, type: 3}
       propertyPath: m_Name
-      value: People
+      value: Crowd
       objectReference: {fileID: 0}
     - target: {fileID: 6367566384277174298, guid: 87a7b985b15a4244091de35d7df9169a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13621,6 +13649,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4f32dfddb033d3e40b5841bc53cc1689, type: 3}
   m_PrefabInstance: {fileID: 918558926}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1044565358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4657805349895826215, guid: 9513a97e626302d449527682309a879b, type: 3}
+  m_PrefabInstance: {fileID: 588338684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5575feedf84ca424e9c05f4be293e84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054833198
 GameObject:
   m_ObjectHideFlags: 0
@@ -21280,7 +21319,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 186757882122740016, guid: bcc8732b8b44622449c23934f89e68c0, type: 3}
       propertyPath: m_Name
-      value: People
+      value: Crowd
       objectReference: {fileID: 0}
     - target: {fileID: 710636224206764938, guid: bcc8732b8b44622449c23934f89e68c0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29512,7 +29551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7501788059647666026, guid: bcc8c8f342f71a7439ac0579aa86f030, type: 3}
       propertyPath: m_Name
-      value: People
+      value: Crowd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

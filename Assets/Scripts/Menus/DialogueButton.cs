@@ -48,6 +48,7 @@ public class DialogueButton : MonoBehaviour
             {
                 item.transform.parent = cam.transform.Find("HeldItem");
                 item.transform.position = item.transform.parent.position;
+                item.transform.rotation = item.transform.parent.rotation;
                 item.gameObject.SetActive(true);
             }
             available = false;

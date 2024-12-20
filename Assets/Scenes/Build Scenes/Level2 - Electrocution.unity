@@ -427,9 +427,9 @@ MonoBehaviour:
   Preload: 0
   NonRigidbodyVelocity: 0
   Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 2.55
-  OverrideMaxDistance: 3.14
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &53487815
 Transform:
   m_ObjectHideFlags: 0
@@ -6048,7 +6048,7 @@ MonoBehaviour:
   - Intense Sunlight
   - Exposed Electrical Wire
   airway: 010000
-  breathing: 00000000010000
+  breathing: 00000100000000
   circulation: 010000
   resultsUI: {fileID: 1011356164}
 --- !u!4 &203924686

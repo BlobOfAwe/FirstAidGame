@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
         saveData.levels[0].available = true;
 
         SaveGame();
+
+        SceneManager.LoadScene(1);
     }
     
     public void SaveGame()
